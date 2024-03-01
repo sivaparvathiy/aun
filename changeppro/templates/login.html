@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Title</title>
+</head>
+<style>
+ .error{color: red}
+</style>
+Page 184 of 297
+MOHAN S.REDDY
+<body>
+<form action="" method="post" novalidate>
+ {% csrf_token %}
+ {% if form.non_field_errors %}
+ {% for error in form.non_field_errors %}
+ <p class="error">{{ error }}</p>
+ {% endfor %}
+ {% endif %}
+ {% for fm in form %}
+ {{ fm.label_tag }}{{ fm }}
+ {{ fm.errors|striptags }} <br><br> 
+ {% endfor %}
+ <input type="submit" value="Login">
+<a href="{% url 'signup' %}">signup</a>
+</form>
+</body>
+</html>
